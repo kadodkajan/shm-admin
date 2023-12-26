@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../App.css";
 
 const Stores = () => {
   const [stores, setStores] = useState([]);
@@ -64,13 +65,16 @@ const Stores = () => {
     e.preventDefault();
     console.log(store);
     try {
-      const response = await fetch("https://apiforshm-production.up.railway.app/addStore", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(store), // Assuming `store` is the state containing your form data
-      });
+      const response = await fetch(
+        "https://apiforshm-production.up.railway.app/addStore",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(store), // Assuming `store` is the state containing your form data
+        }
+      );
 
       const data = await response.json();
 
@@ -88,82 +92,89 @@ const Stores = () => {
       // TODO: Handle the error, e.g., show an error message to the user
     }
   };
-
+  const classDiv = {
+    background: "rgba(255,255,255,0.3)",
+  };
   return (
     <>
-      <div className="card">
+      <div
+        className="card"
+        style={{ minHeight: "96vh", backgroundColor: "#739072" }}
+      >
         <div className="card-body">
-          <form onSubmit={handleSubmit} className="row">
-            {/* Left Column */}
-            <div className="col-md-6">
-              <label>
-                Store Name:
-                <input
-                  type="text"
-                  name="storeName"
-                  value={store.storeName}
-                  onChange={handleInputChange}
-                  className="form-control"
-                  required
-                />
-              </label>
-              <br />
-              <label>
-                Store ID:
-                <input
-                  type="text"
-                  name="storeId"
-                  value={store.storeId}
-                  onChange={handleInputChange}
-                  className="form-control"
-                  required
-                />
-              </label>
-              <br />
-            </div>
+          <div className="card" style={classDiv}>
+            <div className="card-body">
+              <form onSubmit={handleSubmit} className="row">
+                {/* Left Column */}
+                <div className="col-md-6">
+                  <label>
+                    Store Name:
+                    <input
+                      type="text"
+                      name="storeName"
+                      value={store.storeName}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </label>
+                  <br />
+                  <label>
+                    Store ID:
+                    <input
+                      type="text"
+                      name="storeId"
+                      value={store.storeId}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </label>
+                  <br />
+                </div>
 
-            {/* Submit Button */}
-            <div className="col-12 mt-3 d-flex justify-content-end">
-              <button type="submit" className="btn btn-success">
-                Add Store
-              </button>
+                {/* Submit Button */}
+                <div className="col-12 mt-3 d-flex justify-content-end">
+                  <button type="submit" className="btn btn-success">
+                    Add Store
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-      </div>
+          </div>
 
-      <div className="card mt-3">
-        <div className="card-body">
-          <h2 className="card-title">Store List</h2>
-          <table
-            className="table rounded"
-            style={{ overflow: "hidden", borderRadius: "15px" }}
-          >
-            {" "}
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>ID</th>
-                <th>Remove</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stores.map((store) => (
-                <tr key={store._id}>
-                  <td>{store.storeName}</td>
-                  <td>{store.storeId}</td>
-                  <td>
-                    <button
-                      onClick={() => handleDelete(store.storeId)}
-                      className="btn btn-danger"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="card mt-3" style={classDiv}>
+            <div className="card-body">
+              <table 
+               
+              >
+               
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {stores.map((store) => (
+                    <tr key={store._id}>
+                      <td>{store.storeName}</td>
+                      <td>{store.storeId}</td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(store.storeId)}
+                          className="btn btn-danger"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </>

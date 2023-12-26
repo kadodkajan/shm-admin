@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+#myTable.table {
+  background-color: black !important;
+  color: white !important;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #343a40; /* Use a darker color for the bottom border */
+}
+
+th {
+
+  color: #fff;
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+

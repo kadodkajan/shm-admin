@@ -115,12 +115,17 @@ const User = () => {
       // TODO: Handle the error, e.g., show an error message to the user
     }
   };
-  
+  const classDiv = {
+    background: "rgba(255,255,255,0.3)",
+  };
 
   return (
     <>
-      <div className="card">
-        <div className="card-body">
+    <div className="card" style={{  minHeight: '96vh' , backgroundColor: "#739072"}}>
+    <div className="card-body" >
+    <div className="card" style={classDiv}>
+
+        <div className="card-body" >
           <form onSubmit={handleSubmit} className="row">
             {/* Left Column */}
             <div className="col-md-6">
@@ -218,12 +223,10 @@ const User = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <div className="card mt-3">
+          <div className="card mt-3" style={classDiv}>
             <div className="card-body">
-              <h2 className="card-title">User List</h2>
               <table
-                className="table rounded"
-                style={{ overflow: "hidden", borderRadius: "15px" }}
+                
               >
                 <thead>
                   <tr>
@@ -257,6 +260,9 @@ const User = () => {
           </div>
         )}
       </div>
+      </div>
+      </div>
+
     </>
   );
 };
