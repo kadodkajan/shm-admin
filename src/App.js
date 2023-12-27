@@ -13,7 +13,7 @@ function App() {
     <Router>
          
 
-      <div style={{ display: 'flex' ,backgroundColor:'#4F6F52' , minHeight: '96vh'}}>
+      <div style={{ display: 'flex' ,backgroundColor:'#4F6F52' , minHeight: '100vh'}}>
         {/* Left Navigation */}
         <div style={{ flex: '0 0 250px', paddingLeft: '10px',paddingTop: '10px',borderRadius: '10px' , minHeight: '96vh'}}>
           <Navigation />

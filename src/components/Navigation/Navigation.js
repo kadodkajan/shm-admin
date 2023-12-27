@@ -9,17 +9,17 @@ function Navigation() {
         <ul className="nav flex-column align-items-center">
           <li className="nav-item">
             <Link className="nav-link" to="/">
-              <button className="btn btn-outline-secondary btn-lg">Home</button>
+              <button className="nav_button">Home</button>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/store">
-              <button className="btn btn-outline-secondary btn-lg btn-block">Stores</button>
+              <button className="nav_button">Stores</button>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/user">
-              <button className="btn btn-outline-secondary btn-lg btn-block">Users</button>
+              <button className="nav_button">Users</button>
             </Link>
           </li>
         </ul>
