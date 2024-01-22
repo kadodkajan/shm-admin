@@ -14,10 +14,12 @@ const Stores = () => {
           setStores(data.stores);
         } else {
           console.error("Error fetching stores:", data.message);
+          alert("Error fetching stores");
         }
       })
       .catch((error) => {
         console.error("Error fetching stores:", error);
+        alert("Error fetching stores");
       });
   }, []);
 
@@ -34,21 +36,19 @@ const Stores = () => {
 
       if (data.status === "success") {
         console.log("Store deleted successfully");
+          alert("Store deleted successfully");
         window.location.reload();
       } else {
         console.error("Error deleting store:", data.message);
-        // TODO: Handle the error, e.g., show an error message to the user
-      }
+alert("Error deleting store");    }
     } catch (error) {
       console.error("Error deleting store:", error);
-      // TODO: Handle the error, e.g., show an error message to the user
-    }
+alert("Error deleting store");  }
   };
 
   const [store, setstore] = useState({
     storeName: "",
     storeId: "",
-    // Add more fields as needed
   });
 
   const handleInputChange = (e) => {
@@ -65,7 +65,6 @@ const Stores = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(store);
     try {
       const response = await fetch(
         "https://apiforshm-production.up.railway.app/addStore",
@@ -81,17 +80,14 @@ const Stores = () => {
       const data = await response.json();
 
       if (data.status === "success") {
-        console.log("store added successfully");
+        alert("store added successfully");
         window.location.reload();
-        // TODO: Handle success, e.g., redirect or show a success message
-      } else {
+    } else {
         console.error("Error adding store:", data.message);
-        // TODO: Handle the error, e.g., show an error message to the user
-      }
+alert("Error adding store");    }
     } catch (error) {
       console.error("Error adding store:", error);
-      // TODO: Handle the error, e.g., show an error message to the user
-    }
+alert("Error adding store");  }
   };
 
   const classDiv = {
@@ -136,7 +132,7 @@ const Stores = () => {
 
             {/* Submit Button */}
             <Col md={12} className="mt-3 d-flex justify-content-end">
-              <Button type="submit" className="btn btn-success">
+              <Button type="submit" className="btn btn-success" >
                 Add Store
               </Button>
             </Col>

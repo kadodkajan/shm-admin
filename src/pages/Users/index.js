@@ -80,13 +80,15 @@ const User = () => {
       const data = await response.json();
 
       if (data.status === "success") {
-        console.log("User added successfully");
+      alert("User added successfully");
         window.location.reload();
       } else {
         console.error("Error adding user:", data.message);
+        alert("Error adding user");
       }
     } catch (error) {
       console.error("Error adding user:", error);
+      alert("Error adding user");
     }
   };
 
@@ -102,13 +104,15 @@ const User = () => {
       const data = await response.json();
 
       if (data.status === "success") {
-        console.log("User deleted successfully");
+        alert("User deleted successfully");
         window.location.reload();
       } else {
         console.error("Error deleting user:", data.message);
+        alert("Error deleting user");
       }
     } catch (error) {
       console.error("Error deleting user:", error);
+      alert("Error deleting user");
     }
   };
   const classDiv = {
