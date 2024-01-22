@@ -1,30 +1,27 @@
 // Navigation.js
 import React from "react";
 import { Link } from "react-router-dom";
+import { Nav, Navbar ,Container} from 'react-bootstrap';
 
 function Navigation() {
+  const customNavbarStyle = {
+    backgroundColor: "#739072", // Replace with your desired color code
+  };
+
   return (
-    <div className="card "style={{ backgroundColor:'#739072', width:'250px',minHeight: '96vh' ,position: 'fixed'}}>
-      <div className="card-body" >
-        <ul className="nav flex-column align-items-center">
-          <li className="nav-item">
-            <Link className="nav-link" to="/">
-              <button className="nav_button">Home</button>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/store">
-              <button className="nav_button">Stores</button>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/user">
-              <button className="nav_button">Users</button>
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <Container style={customNavbarStyle}>
+    <Navbar style={customNavbarStyle} expand="md">
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/store">Stores</Nav.Link>
+          <Nav.Link as={Link} to="/user">Users</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+    </Container>
   );
 }
 

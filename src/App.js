@@ -5,22 +5,18 @@ import Navigation from './components/Navigation/Navigation';
 import Store from './pages/Stores';
 import Home from './pages/Home';
 import User from './pages/Users';
-import "./App.css"
 
 function App() {
-  
   return (
     <Router>
-         
-
-      <div style={{ display: 'flex' ,backgroundColor:'#4F6F52' , minHeight: '100vh'}}>
+      <div>
         {/* Left Navigation */}
-        <div style={{ flex: '0 0 250px', paddingLeft: '10px',paddingTop: '10px',borderRadius: '10px' , minHeight: '96vh'}}>
+        <div>
           <Navigation />
         </div>
 
         {/* Right Content */}
-        <div style={{ flex: 1, paddingLeft: '20px', paddingTop: '10px',paddingRight: '10px',minHeight: '96vh' ,paddingBottom: '10px'}}>
+        <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/store" element={<Store />} />
@@ -28,7 +24,6 @@ function App() {
           </Routes>
         </div>
       </div>
-
     </Router>
   );
 }

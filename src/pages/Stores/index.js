@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Card, Form, Button, Col, Table, Container, Row } from "react-bootstrap"; // Added Row import
 import "../../App.css";
 
 const Stores = () => {
@@ -43,6 +44,7 @@ const Stores = () => {
       // TODO: Handle the error, e.g., show an error message to the user
     }
   };
+
   const [store, setstore] = useState({
     storeName: "",
     storeId: "",
@@ -72,7 +74,7 @@ const Stores = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(store), // Assuming `store` is the state containing your form data
+          body: JSON.stringify(store),
         }
       );
 
@@ -81,7 +83,6 @@ const Stores = () => {
       if (data.status === "success") {
         console.log("store added successfully");
         window.location.reload();
-
         // TODO: Handle success, e.g., redirect or show a success message
       } else {
         console.error("Error adding store:", data.message);
@@ -92,92 +93,88 @@ const Stores = () => {
       // TODO: Handle the error, e.g., show an error message to the user
     }
   };
+
   const classDiv = {
     background: "rgba(255,255,255,0.3)",
   };
+  const customStyle = {
+    backgroundColor: "#739072",
+  };
+
   return (
-    <>
-      <div
-        className="card"
-        style={{ minHeight: "96vh", backgroundColor: "#739072" }}
-      >
-        <div className="card-body">
-          <div className="card" style={classDiv}>
-            <div className="card-body">
-              <form onSubmit={handleSubmit} className="row">
-                {/* Left Column */}
-                <div className="col-md-6">
-                  <label>
-                    Store Name:
-                    <input
-                      type="text"
-                      name="storeName"
-                      value={store.storeName}
-                      onChange={handleInputChange}
-                      className="form-control"
-                      required
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Store ID:
-                    <input
-                      type="text"
-                      name="storeId"
-                      value={store.storeId}
-                      onChange={handleInputChange}
-                      className="form-control"
-                      required
-                    />
-                  </label>
-                  <br />
-                </div>
+    <Container style={customStyle}>
+      <Card className="card" style={classDiv}>
+        <Card.Body>
+          <Form onSubmit={handleSubmit} className="row">
+            {/* Left Column */}
+            <Col md={6}>
+              <Form.Group controlId="formStoreName">
+                <Form.Label>Store Name:</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="storeName"
+                  value={store.storeName}
+                  onChange={handleInputChange}
+                  className="form-control"
+                  required
+                />
+              </Form.Group>
+              <br />
+              <Form.Group controlId="formStoreId">
+                <Form.Label>Store ID:</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="storeId"
+                  value={store.storeId}
+                  onChange={handleInputChange}
+                  className="form-control"
+                  required
+                />
+              </Form.Group>
+              <br />
+            </Col>
 
-                {/* Submit Button */}
-                <div className="col-12 mt-3 d-flex justify-content-end">
-                  <button type="submit" className="btn btn-success">
-                    Add Store
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+            {/* Submit Button */}
+            <Col md={12} className="mt-3 d-flex justify-content-end">
+              <Button type="submit" className="btn btn-success">
+                Add Store
+              </Button>
+            </Col>
+          </Form>
+        </Card.Body>
+      </Card>
 
-          <div className="card mt-3" style={classDiv}>
-            <div className="card-body">
-              <table 
-               
-              >
-               
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>ID</th>
-                    <th>Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stores.map((store) => (
-                    <tr key={store._id}>
-                      <td>{store.storeName}</td>
-                      <td>{store.storeId}</td>
-                      <td>
-                        <button
-                          onClick={() => handleDelete(store.storeId)}
-                          className="btn btn-danger"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+      <Card className="card mt-3" style={{ ...classDiv, marginBottom: "20px" }}>
+        <Card.Body>
+          <Row> {/* Added Row component */}
+            {stores.map((store) => (
+              <Col key={store._id} md={4} className="mb-3">
+                <Card>
+                  <Card.Body>
+                    <Row>
+                      <Col>
+                        <Card.Title>{store.storeName}</Card.Title>
+                      </Col>
+                      <Col>
+                        <Card.Text>ID: {store.storeId}</Card.Text>
+                      </Col>
+                    </Row>
+
+                    <br />
+                    <Button
+                      onClick={() => handleDelete(store.storeId)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 

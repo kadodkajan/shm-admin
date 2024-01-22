@@ -1,5 +1,5 @@
-// Home.js
 import React, { useState, useEffect } from "react";
+import { Card, Container, Row, Col } from "react-bootstrap";
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -41,32 +41,42 @@ function Home() {
 
     fetchData();
   }, []);
-
+  const customStyle = {
+    backgroundColor: "#739072",
+    height: "100vh",
+  };
   const classDiv = {
     background: "rgba(255,255,255,0.3)",
   };
-
   return (
-    <div className="card" style={{ minHeight: "96vh", backgroundColor: "#739072" }}>
-      <div className="card-body">
-        <div className="card" style={classDiv}>
-          <div className="card-body">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Users</h5>
-                <p className="card-text">Total Users: {users.length}</p>
-              </div>
-            </div>
-            <div className="card mt-3">
-              <div className="card-body">
-                <h5 className="card-title">Stores</h5>
-                <p className="card-text">Total Stores: {stores.length}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container style={customStyle}>
+      
+        <Card className="card" style={classDiv}>
+          <Card.Body>
+
+            <Row>
+          <Col md={6}>
+            <Card className="mt-3">
+              <Card.Body>
+                <Card.Title>Users</Card.Title>
+                <Card.Text>Total Users: {users.length}</Card.Text>
+              </Card.Body>
+            </Card>
+            </Col>
+            <Col md={6}>
+
+            <Card className="mt-3">
+              <Card.Body>
+                <Card.Title>Stores</Card.Title>
+                <Card.Text>Total Stores: {stores.length}</Card.Text>
+              </Card.Body>
+            </Card>
+            </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+    
+    </Container>
   );
 }
 
