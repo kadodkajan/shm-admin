@@ -83,8 +83,8 @@ alert("Error deleting store");  }
         alert("store added successfully");
         window.location.reload();
     } else {
-        console.error("Error adding store:", data.message);
-alert("Error adding store");    }
+        console.error("Error adding store", data.message);
+alert("Error adding store Store Id should be unique");    }
     } catch (error) {
       console.error("Error adding store:", error);
 alert("Error adding store");  }
