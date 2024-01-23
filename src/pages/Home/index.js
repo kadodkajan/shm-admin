@@ -42,8 +42,9 @@ function Home() {
     fetchData();
   }, []);
   const customStyle = {
-    backgroundColor: "#739072",
+    background: "rgba(255,255,255,0.0)",
     height: "100vh",
+    paddingTop: "10px",
   };
   const classDiv = {
     background: "rgba(255,255,255,0.3)",

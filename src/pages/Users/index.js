@@ -84,7 +84,7 @@ const User = () => {
         window.location.reload();
       } else {
         console.error("Error adding user:", data.message);
-        alert("Error adding user");
+        alert("Error adding user User iD should be unique");
       }
     } catch (error) {
       console.error("Error adding user:", error);
@@ -119,7 +119,9 @@ const User = () => {
     background: "rgba(255,255,255,0.3)",
   };
   const customStyle = {
-    backgroundColor: "#739072", 
+    background: "rgba(255,255,255,0.0)",
+    height: "100vh",
+    paddingTop: "10px",
   };
   
   return (

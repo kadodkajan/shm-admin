@@ -94,7 +94,9 @@ alert("Error adding store");  }
     background: "rgba(255,255,255,0.3)",
   };
   const customStyle = {
-    backgroundColor: "#739072",
+    background: "rgba(255,255,255,0.0)",
+    height: "100vh",
+    paddingTop: "10px",
   };
 
   return (
