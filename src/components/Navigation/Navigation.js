@@ -1,27 +1,31 @@
-// Navigation.js
 import React from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar ,Container} from 'react-bootstrap';
+import { AppBar, Toolbar, Typography, Button, Container } from '@mui/material';
 
 function Navigation() {
   const customNavbarStyle = {
-    backgroundColor: "#739072", // Replace with your desired color code
+    backgroundColor: "#739072",
   };
 
   return (
-    <Container style={customNavbarStyle}>
-    <Navbar style={customNavbarStyle} expand="md">
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/">Home</Nav.Link>
-          <Nav.Link as={Link} to="/store">Stores</Nav.Link>
-          <Nav.Link as={Link} to="/user">Users</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-    </Container>
+    <AppBar position="static" style={customNavbarStyle}>
+      <Container>
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Admin Panel
+          </Typography>
+          <Button component={Link} to="/" color="inherit">
+            Home
+          </Button>
+          <Button component={Link} to="/store" color="inherit">
+            Stores
+          </Button>
+          <Button component={Link} to="/user" color="inherit">
+            Users
+          </Button>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 
